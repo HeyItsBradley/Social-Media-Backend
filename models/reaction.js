@@ -8,19 +8,14 @@ const reactionSchema = new Schema({
   reactionBody: {
     type: String,
     required: true,
-    maxLength: 280,
+    maxlength: 280,
   },
   username: {
     type: String,
     required: true,
   },
-  reactions: [reactionSchema],
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
 });
-
-userSchema.virtual("reactionCount").get(() => {
-  return this.reactions.length;
-});
-
-const Thought = mongoose.model("thought", thoughtSchema);
-
-module.export = Thought;
