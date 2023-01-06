@@ -73,6 +73,9 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
   deleteReaction(req, res) {
+    console.log(
+      `trying to remove reactionId(${req.params.reactionId}) from thought with id ${req.params.thoughtId}`
+    );
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
       { $pull: { reactions: { reactionId: req.params.reactionId } } }
