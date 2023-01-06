@@ -1,17 +1,21 @@
-const { user, thought } = require("../models");
+const { User, Thought } = require("../models");
 
-module.export = {
+module.exports = {
   getUsers(req, res) {
-    user.find().then(async (users) => {
-      const userObj = {
-        users,
-      };
-      return res.json(userObj);
-    });
+    User.find()
+      .then((users) => {
+        const userObj = {
+          users,
+        };
+        return res.json(userObj);
+      })
+      .catch((err) => {
+        console.log(err);
+        return res.status(500).json(err);
+      });
   },
   getSingleUser(req, res) {
-    user
-      .findOne({ _id: req.params.userId })
+    User.findOne({ _id: req.params.userId })
       .select("-__v")
       .lean()
       .then(async (user) =>
@@ -25,8 +29,7 @@ module.export = {
       });
   },
   createUser(req, res) {
-    user
-      .create(req.body)
+    User.create(req.body)
       .then((user) => res.json(user))
       .catch((err) => res.status(500).json(err));
   },
