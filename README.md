@@ -22,6 +22,8 @@ npm i
 
 ## Usage
 
+https://drive.google.com/file/d/1ywGdFKtmjiAmpPvhQL5OZuUMo51o04aJ/view
+
 To use this program, make sure to install dependencies, and then run npm run start in the terminal, this will create the database and start the server, you can then use something like insomnia to test the crud operations.
 
 ## How to Contribute
